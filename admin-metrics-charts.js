@@ -5,12 +5,11 @@ window.Wized.push((Wized) => {
   const interval = setInterval(() => {
     const path = window.location.pathname;
     const isLoaded = document.readyState === "complete";
-    const data = Wized.data?.r.metrics_all_booking.data;
-    const bookings = data.all_bookings_approved;
+    const data = Wized.data?.r?.metrics_all_booking?.data;
+    const bookings = data?.all_bookings_approved;
 
-    // Check all conditions are met
-    if (path === "/tutor/earnings" && isLoaded && bookings?.length > 0) {
-      clearInterval(interval); // Stop checking
+    if (path === "/tutor/earnings" && isLoaded && Array.isArray(bookings) && bookings.length > 0) {
+      clearInterval(interval);
       renderChart(bookings);
     }
   }, 200);
@@ -99,11 +98,11 @@ window.Wized.push((Wized) => {
   const interval = setInterval(() => {
     const path = window.location.pathname;
     const isLoaded = document.readyState === "complete";
-    const data = Wized.data?.r.metrics_all_booking.data;
-    const bookings = data.all_bookings_approved;
+    const data = Wized.data?.r?.metrics_all_booking?.data;
+    const bookings = data?.all_bookings_approved;
 
     // Check all conditions are met
-    if (path === "/tutor/earnings" && isLoaded && bookings?.length > 0) {
+    if (path === "/tutor/earnings" && isLoaded && Array.isArray(bookings) && bookings.length > 0) {
       clearInterval(interval); // Stop checking
       renderChart(bookings);
     }
